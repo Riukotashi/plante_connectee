@@ -18,3 +18,5 @@ L’objet connecté permettra quant à lui de capter l’humidité du sol, la lu
 
  ![capture2](https://user-images.githubusercontent.com/43552846/50822098-1d745800-1331-11e9-81a8-8dd278467528.PNG)
 Ces algorithmes vont permettre de convertir les données pour que l’on puisse le comprendre et que les machines Arduino et Raspberry puissent travailler avec. Les deux premiers algorithmes permettent aux machines de pouvoir passer du binaire au décimal et vice versa tandis que le troisième algorithme permet de stocker dans la mémoire tampon les octets lorsque l’ordinateur est trop occupé pour faire la tâche qu’il doit effectuer.
+
+Nous utiliserons l'Arduino pour connecter notre plante. De ce fait nous avons élaborer un programme permettant de lire les valeurs des différents paramètres lié au bien être de la plante: luminosité, humidité et température. Les données seront envoyés en permanance sur le site thinger.io afin de pouvoir contrôler à distance les besoins de la plante.
