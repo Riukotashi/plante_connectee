@@ -25,7 +25,9 @@ Les différents capteurs à notre disposition sont :
 - SEN0193 capteur d'humidité du sol
 - APDS-9301 capteur de luminosité
 
+![2019-06-24_16h57_47](https://user-images.githubusercontent.com/43552846/60029368-4f8c3300-96a1-11e9-8510-7e81c5d2c1e5.png)
 
-Les données seront envoyées en permanence sur le site API thinger.io afin de pouvoir contrôler à distance les besoins de la plante et maîtriser au mieux ses différents paramètres.
 
-Nous récupérons ensuite les données de thinger.io à l'aide de token 
+Les données seront envoyées en permanence sur le site API thinger.io afin de pouvoir contrôler à distance les besoins de la plante et maîtriser au mieux ses différents paramètres. 
+
+Nous récupérons ensuite les données de thinger.io à l'aide de token pour l'intégrer à notre code python. L'application est constitué d'une interface utilisateur qui demande de se connecter à l'API thinger.io avec le pseudo et le mot de passe propre à thinger.io. L'utilisateur a ensuite le choix entre plusieurs appareils connectés qui sont au préalable connectés à la plante. On choisit ensuite dans la base de donnée le nom de la plante que l'utilisateur possède. Puis l'application va comparer les données de thinger.io et de la base de donnée et selon l'intervalle minimum et maximum du besoin de la plante, 
