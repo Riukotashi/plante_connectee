@@ -21,9 +21,6 @@ Ces algorithmes vont permettre de convertir les données pour que l’on puisse 
 
 Nous utiliserons l'Arduino UNO WiFi REV2 pour connecter notre plante. De ce fait nous avons élaborer un programme permettant de lire les valeurs des différents paramètres lié au bien être de la plante: luminosité, humidité et température.
 Les différents capteurs à notre disposition sont :
-- DHT11 capteur de température et d'humidité ambiant
-- SEN0193 capteur d'humidité du sol
-- APDS-9301 capteur de luminosité
 
 ![2019-06-24_16h57_47](https://user-images.githubusercontent.com/43552846/60029368-4f8c3300-96a1-11e9-8510-7e81c5d2c1e5.png)
 
