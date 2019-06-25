@@ -13,6 +13,8 @@ Nous sommes l’entreprise Connected Flowers et nous souhaitons créer un objet 
 6.	La température atmosphérique optimale
 7.	La luminosité optimale 
 8.	La période de floraison
+
+
 L’objet connecté permettra quant à lui de capter l’humidité du sol, la luminosité et la température atmosphérique grâce à des capteurs relié à des machines tels que Arduino et Raspberry PI. Sachant que ces données seront directement en lien avec notre base de données ce qui permettra par le biais d’une application client (qui sera créer par notre entreprise) de pouvoir savoir en temps réel si les conditions sont optimales ou au contraire si les conditions deviennent dangereuses pour la survie de la plante.
  
 
