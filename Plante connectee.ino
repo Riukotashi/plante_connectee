@@ -100,7 +100,7 @@ void setup()
 
 /**
  *  @brief We are Using thing.handle function to send and get information from
- *        thinger.io. Every seconds we are sending to thinger.io the sensor's
+ *        thinger.io. Every seconds we are sending to thinger.io the sensors's
  *        value and printing it on the monitor too.
  **/
 
