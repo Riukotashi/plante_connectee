@@ -46,6 +46,10 @@ Voici la liste de toutes les librairies
 #define SSID_PASSWORD "12345678" // par le mot de passe de votre réseau
 ```
  
+ ### Comment connecter les capteurs
+ 
+ Le DHT 11
+ ![Arduino-and-DHT11_bb-800x800](https://user-images.githubusercontent.com/26713811/60217542-3f28b380-986d-11e9-9d7e-498869fcb515.png)
  
  
  
