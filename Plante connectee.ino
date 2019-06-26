@@ -17,7 +17,6 @@
 
 DHT  dht(DHTPIN, DHTTYPE);
 int  humidityPin = A3;
-int  moistureValue;
 
 
 #define _DEBUG_
@@ -90,9 +89,8 @@ void setup()
   pinMode(5, OUTPUT);
  
   
-  // This is used to get the value of the sensors on thinger.io dashboard
+  // This is used to send the value of the sensors to thinger.io 
   thing["luxValue"] >> outputValue(apds.readCH0Level());
-  thing["moistureValue"] >> outputValue(dht.readHumidity());
   thing["temperatureValue"] >> outputValue(dht.readTemperature());
   thing["humidityValue"] >> outputValue(humidityPin);
   
