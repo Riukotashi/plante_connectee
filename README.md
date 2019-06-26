@@ -17,12 +17,12 @@ Il faut d'abord disposer du matériel suivant suivant:
  ### Ce qu'il faut installer
 
 Tout d'abord il est nécessaire d'installer plusieurs librairies pour le code arduino
-Nous vous recommandons  
+Nous vous recommandons d'utiliser l'IDE web d'arduino pour compiler/téléverser le code
 Voici la liste de toutes les librairies
-*
-*
-*
-*
+* [thinger-io](https://github.com/thinger-io/Arduino-Library)
+* [SparkFun APDS-9301](https://github.com/sparkfun/SparkFun_APDS9301_Library)
+* [Adafruit Unified Sensor Library](https://github.com/adafruit/Adafruit_Sensor)
+* [DHT 11](https://github.com/adafruit/DHT-sensor-library)
  
  
  
