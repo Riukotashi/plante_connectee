@@ -8,6 +8,7 @@
 Il faut d'abord disposer du matériel suivant suivant:
  * Une carte Arduino UNO WiFi REV2
  * Un capteur DHT11 (pour la température et l'humidité ambiante)
+ * Une résistance de 5000 Ohm pour le capteur DHT11
  * Un capteur SEN0193 (pour l'humidité du sol)
  * Un capteur APDS-9301 (capteur de lumière)
  * Un bus I2C pour le capteur de lumière
