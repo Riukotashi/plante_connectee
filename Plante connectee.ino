@@ -1,20 +1,38 @@
+/*
+ * Workshop_4
+ *
+ * Workshop 4 is a system that read the value of the Light sensor APDS-9301.
+ * In addition we are using thinger.io to connect our Arduino to a server
+ * The data of the light is send to a dashboard and we can control the state of 
+ * a led thanks to a button of the dashboard.
+ * This will only work with an ARDUINO WIFI REV 2.
+ */
+ 
+ 
 #include <Adafruit_Sensor.h>
 #include "DHT.h"
+#define DHTPIN 4
+#define DHTTYPE DHT11
 
-// we are including 2 library to use thinger.io server
-#include <WiFi.h>
-#include <ThingerWifi.h>
 
-// we are including 2 library to use the APDS sensor
-#include "Wire.h"
-#include <Sparkfun_APDS9301_Library.h>
-
+DHT  dht(DHTPIN, DHTTYPE);
+int  humidityPin = A3;
+int  moistureValue;
 
 
 #define _DEBUG_
 #define _DISABLE_TLS_
 #define THINGER_USE_STATIC_MEMORY
 #define THINGER_STATIC_MEMORY_SIZE 512
+
+// we are including 2 library to use thinger.io server
+#include <ThingerWifi.h>
+#include <WiFi.h>
+
+
+// we are including 2 library to use the APDS sensor
+#include "Wire.h"
+#include <Sparkfun_APDS9301_Library.h>
 
 /**
  *  @brief Firstly we need to create an account in the thinger.io website. Then
@@ -34,28 +52,12 @@ ThingerWifi thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL);
 
 APDS9301 apds;
 
-#define INT_PIN 3 // We'll connect the INT pin from the APDS sensor 
+#define INT_PIN 2 // We'll connect the INT pin from the APDS sensor 
 // to the PIN 2.
 
-#define DHTPIN 2
-#define DHTTYPE DHT11
-
-DHT  dht(DHTPIN, DHTTYPE);
-int  redPin             = 8;
-int  greenPin           = 7;
-int  moisturePin        = A3;
-int  moistureValue;
-bool humidityTempState;
-bool moistureState;
-
-/**
- * @brief This function configure pin of the color of the led.
- *        It also configure the wifi and initialize the light
- *        sensor.
- **/
-
-void setup()
+void setup() 
 {
+    
   thing.add_wifi(SSID, SSID_PASSWORD); // configure wifi network
   
   delay(5);    // The CCS811 wants a brief delay after startup.
@@ -81,103 +83,20 @@ void setup()
   //  a pullup resistor on it as the interrupt is a
   Serial.println(apds.getLowThreshold());
   Serial.println(apds.getHighThreshold());
+  
+  dht.begin();
 
+  pinMode(INT_PIN, OUTPUT);
+  pinMode(5, OUTPUT);
+  
+  // This is used to control the led pin on thinger.io dashboard
+  
   // This is used to get the value of the APDS sensor on thinger.io dashboard
   thing["luxValue"] >> outputValue(apds.readCH0Level());
+  thing["moistureValue"] >> outputValue(dht.readHumidity());
+  thing["temperatureValue"] >> outputValue(dht.readTemperature());
+  thing["humidityValue"] >> outputValue(humidityPin);
   
-  pinMode(INT_PIN, OUTPUT);
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
-  dht.begin();
-}
-
-/**
- * @brief This function launch three different fonctions : humidityTempValues
- *        read the humidity and temperature of the sensor and also determine
- *        if the threshold is exceeded or not. moistureValueFc read if it's not
- *        dry and also determine if the threshold is exceeded or not. colorLed
- *        turn on the color of the ledaccording to the state of the sensors.
- *        It also send values of a light sensor to the thinger.io server.
- **/
-
-void loop()
-{
-  humidityTempValues();
-  moistureValueFc();
-  colorLed();
-  lightSensor();
-}
-
-/**
- * @brief This function is used to read the humidity and the temperature
- *        of the DHT11 Humidity and Temperature. When the humidity is less
- *        than 30 or the temperature is above 30 the humidityTempState is
- *        true.
- **/
-
-void humidityTempValues()
-{
-  float h = dht.readHumidity();
-  // Read temperature as Celsius
-  float t = dht.readTemperature();
-  if (h <= 30 && t >= 30)
-  {
-    humidityTempState = false; 
-  }
-  else
-  {
-    humidityTempState = true; 
-  }
-}
-
-/**
- * @brief This function is used to read the humidity and the temperature
- *        of the DSEN0193 Moisture. The sensor was calibrated and when the 
- *        sensor was dry the data was 500 while when it was wet the data was 
- *        250. So 20% drought equals 450. When the data is above than 450 the 
- *        moistureState is true.
- **/
-
-void moistureValueFc()
-{
-  moistureValue = analogRead(moisturePin);
-  if (moistureValue >= 450)
-  {
-    moistureState = true;
-  }
-  else
-  {
-    moistureState = false;
-  }
-}
-
-/**
- * @brief This function is used to turn on the color of the led according to
- *        humidityTempState and moistureState. If humidityTempState is true
- *        the led will turn on red, if moistureState is true the led will turn
- *        on yellow but the priority is to humidityTempState. Otherwise the color 
- *        is green.
- **/
-
-
-void colorLed()
-{
-  if (humidityTempState == true) 
-  {
-    digitalWrite(redPin, HIGH);
-    digitalWrite(greenPin, LOW);
-    
-  }
-  else if (moistureState == true)
-  {
-    digitalWrite(redPin, HIGH);
-    digitalWrite(greenPin, HIGH);
-  }
-  else
-  {
-    digitalWrite(redPin, LOW);
-    digitalWrite(greenPin, HIGH);
-  }
 }
 
 /**
@@ -186,11 +105,9 @@ void colorLed()
  *        value and printing it on the monitor too.
  **/
 
-void lightSensor()
+void loop() 
 {
   thing.handle();
   apds.clearIntFlag();
   delay(1000);
-  Serial.print("Luminous flux: ");
-  Serial.println(apds.readCH0Level(), 6);
 }
