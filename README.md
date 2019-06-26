@@ -25,7 +25,11 @@ Voici la liste de toutes les librairies
 * [DHT 11](https://github.com/adafruit/DHT-sensor-library)
  
  
+ ### Ce qu'il faut créer
  
+ Un compte arduino pour utiliser l'ide web d'arduino
+ Un compte thinger.io
+ Un device sur thinger .io
  
  
  
