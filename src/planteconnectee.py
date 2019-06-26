@@ -147,8 +147,8 @@ main_api_get_value = url_thinger_api + parameter_get_value
 
 # Those parameter will be used to get user devices
 get_lux_value = main_api_get_value + "luxValue" + authorization
-get_moisture_value = main_api_get_value + "moistureValue" + authorization
-get_temperature_value = main_api_get_value + "humidityValue" + authorization
+get_humidity_value = main_api_get_value + "humidityValue" + authorization
+get_temperature_value = main_api_get_value + "temperatureValue" + authorization
 
 
 system('cls') # Clear the console (windows)
@@ -252,18 +252,18 @@ while (stop_reload == 0):
     # is good
     else:
         state_sensors.append(("temperature", "La temperature est optimale"))
-    # We are testing that we get the moisture value from thinger.io
-    if (requests.get(get_moisture_value).json() is None):
-        state_sensors.append(("moisture", "Les informations du capteur d'humidité sont indisponibles"))
-    # If the moisture is too low we add to state_sensors that moisture
+    # We are testing that we get the humidity value from thinger.io
+    if (requests.get(get_humidity_value).json() is None):
+        state_sensors.append(("humidity", "Les informations du capteur d'humidité sont indisponibles"))
+    # If the humidity is too low we add to state_sensors that moisture
     # is too low
-    elif (requests.get(get_moisture_value).json() > int(selected_plante[3])):
-        state_sensors.append(("moisture", "L'humidité du sol de la plante est insuffisante, il faut arroser votre plante"))
+    elif (requests.get(get_humidity_value).json() > int(selected_plante[3])):
+        state_sensors.append(("humidity", "L'humidité du sol de la plante est insuffisante, il faut arroser votre plante"))
         sensor_not_good = sensor_not_good +1
     # If the moisture is good we add to state_sensors that moisture
     # is good
     else:
-        state_sensors.append(("moisture", "L'humidité du sol de la plante est optimale"))
+        state_sensors.append(("humidity", "L'humidité du sol de la plante est optimale"))
 
     # We are testing that we get the lux value from thinger.io
     if (requests.get(get_lux_value).json() is None):
