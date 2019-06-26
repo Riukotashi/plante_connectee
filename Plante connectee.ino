@@ -16,7 +16,7 @@
 
 
 DHT  dht(DHTPIN, DHTTYPE);
-int  humidityPin = A3;
+int  humidityPin = A0;
 
 
 #define _DEBUG_
