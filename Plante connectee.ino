@@ -1,10 +1,10 @@
 /*
- * Workshop_4
+ * Plante_connectee
  *
- * Workshop 4 is a system that read the value of the Light sensor APDS-9301.
+ * Plante_connectee is a system that read the value of the Light sensor APDS-9301,
+ * the Temperature sensor DHT11 and the Humidity sensor SEN0193.
  * In addition we are using thinger.io to connect our Arduino to a server
- * The data of the light is send to a dashboard and we can control the state of 
- * a led thanks to a button of the dashboard.
+ * The data of these sensors is send to a dashboard.  
  * This will only work with an ARDUINO WIFI REV 2.
  */
  
@@ -88,10 +88,9 @@ void setup()
 
   pinMode(INT_PIN, OUTPUT);
   pinMode(5, OUTPUT);
+ 
   
-  // This is used to control the led pin on thinger.io dashboard
-  
-  // This is used to get the value of the APDS sensor on thinger.io dashboard
+  // This is used to get the value of the sensors on thinger.io dashboard
   thing["luxValue"] >> outputValue(apds.readCH0Level());
   thing["moistureValue"] >> outputValue(dht.readHumidity());
   thing["temperatureValue"] >> outputValue(dht.readTemperature());
