@@ -18,9 +18,6 @@ Nous sommes l’entreprise Connected Flowers et nous souhaitons créer un objet 
 L’objet connecté permettra quant à lui de capter l’humidité du sol, la luminosité et la température atmosphérique grâce à des capteurs relié à des machines tels que Arduino et Raspberry PI. Sachant que ces données seront directement en lien avec notre base de données ce qui permettra par le biais d’une application client (qui sera créer par notre entreprise) de pouvoir savoir en temps réel si les conditions sont optimales ou au contraire si les conditions deviennent dangereuses pour la survie de la plante.
  
 
- ![capture2](https://user-images.githubusercontent.com/43552846/50822098-1d745800-1331-11e9-81a8-8dd278467528.PNG)
-Ces algorithmes vont permettre de convertir les données pour que l’on puisse le comprendre et que les machines Arduino et Raspberry puissent travailler avec. Les deux premiers algorithmes permettent aux machines de pouvoir passer du binaire au décimal et vice versa tandis que le troisième algorithme permet de stocker dans la mémoire tampon les octets lorsque l’ordinateur est trop occupé pour faire la tâche qu’il doit effectuer.
-
 Nous utiliserons l'Arduino UNO WiFi REV2 pour connecter notre plante. De ce fait nous avons élaborer un programme permettant de lire les valeurs des différents paramètres lié au bien être de la plante: luminosité, humidité et température.
 Les différents capteurs à notre disposition sont :
 
