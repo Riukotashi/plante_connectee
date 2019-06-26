@@ -58,4 +58,8 @@ Voici la liste de toutes les librairies
 ![20190517_105103](https://user-images.githubusercontent.com/26713811/60217795-cfff8f00-986d-11e9-9a05-d91bb96f8e69.jpg)
 
 Le capteur d'humidité du sol
- 
+![SEN0193-line](https://user-images.githubusercontent.com/26713811/60217895-181eb180-986e-11e9-9260-b262dcbea957.png)
+
+## Conclusion
+
+Vous voici enfin près à l'tulisation de notre programmage il vous suffit simplement de téléverser le code arduino vers votre carte, de télécharger nore code pthon et la base de donnée (dans le fichier src) et de l'utiliser.
