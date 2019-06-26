@@ -1,27 +1,45 @@
 # plante_connectee
 
-## Algorithme lecture de fichier Plante Connectée
-MONNOT Kévin, LY Steven
-Document technique projet plante connectée
 
-Nous sommes l’entreprise Connected Flowers et nous souhaitons créer un objet connecté qui permettra à toute personne n’ayant aucune connaissance en botanique de pouvoir s’occuper d’un jardin chez soi. Nous souhaitons également fournir une base de données composée d’environ 30 plantes de la région contenant les spécifications ci-dessous :
-1.	Le Nom de la plante 
-2.	Une Catégorisation de la plante 
-3.	La Description 
-4.	Une ou plusieurs Photos
-5.	L’humidité optimale du sol
-6.	La température atmosphérique optimale
-7.	La luminosité optimale 
-8.	La période de floraison
+## Comment mettre en place cette plante connectée par vous même
 
+### Le matériel nécessaire
 
-L’objet connecté permettra quant à lui de capter l’humidité du sol, la luminosité et la température atmosphérique grâce à des capteurs relié à des machines tels que Arduino et Raspberry PI. Sachant que ces données seront directement en lien avec notre base de données ce qui permettra par le biais d’une application client (qui sera créer par notre entreprise) de pouvoir savoir en temps réel si les conditions sont optimales ou au contraire si les conditions deviennent dangereuses pour la survie de la plante.
+Il faut d'abord disposer du matériel suivant suivant:
+ * Une carte Arduino UNO WiFi REV2
+ * Un capteur DHT11 (pour la température et l'humidité ambiante)
+ * Un capteur SEN0193 (pour l'humidité du sol)
+ * Un capteur APDS-9301 (capteur de lumière)
  
+ ![2019-06-24_16h57_47](https://user-images.githubusercontent.com/43552846/60029368-4f8c3300-96a1-11e9-8510-7e81c5d2c1e5.png)
+ 
+ 
+ ### Ce qu'il faut installer
 
+Tout d'abord il est nécessaire d'installer plusieurs librairies pour le code arduino
+Nous vous recommandons  
+Voici la liste de toutes les librairies
+*
+*
+*
+*
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 Nous utiliserons l'Arduino UNO WiFi REV2 pour connecter notre plante. De ce fait nous avons élaborer un programme permettant de lire les valeurs des différents paramètres lié au bien être de la plante: luminosité, humidité et température.
 Les différents capteurs à notre disposition sont :
 
-![2019-06-24_16h57_47](https://user-images.githubusercontent.com/43552846/60029368-4f8c3300-96a1-11e9-8510-7e81c5d2c1e5.png)
+
+
+
+
+
+
 
 Le code Arduino permet de lire les différentes données des capteurs. Il permet ainsi de lire le capteur de température DHT11 en °C, le capteur d'humidité du sol SEN0193 dont la valeur est exprimée par une constante allant de 250(mouillé) à 500(sec) et le capteur de luminosité APDS-9301 en lux.
 Les données seront envoyées en permanence sur le site API thinger.io afin de pouvoir contrôler à distance les besoins de la plante et maîtriser au mieux ses différents paramètres. 
