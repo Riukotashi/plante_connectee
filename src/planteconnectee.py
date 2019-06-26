@@ -206,19 +206,19 @@ def select_plant (tab_plante):
     while (j < len(tab_plante) and found == 0):
         if (tab_plante[j][0] == user_choice):
             found = 1
-            selected_plante= tab_plante[j]
+            selected_plant= tab_plante[j]
             
         j = j+1
     if (found == 1):
         system('cls')
         print ("Vous avez tapez un nom de plante valide")
-        return selected_plante
+        return selected_plant
     print ("Nom de plante invalide")
     return select_plant(tab_plante)
 
 # Setting the plant selected by the user
 try:
-    selected_plante = select_plant(tab_plante)
+    selected_plant = select_plant(tab_plante)
 except KeyboardInterrupt:
     print ("Interruption du code détecté, fin de l'application.")
     exit()
@@ -235,17 +235,17 @@ while (stop_reload == 0):
     sensor_not_good = 0
     # We are testing that we get the temperature value from thinger.io
     if (requests.get(get_temperature_value).json() is None):
-        state_sensors.append(("moisture", "Les informations du capteur d'humidité sont indisponibles"))
+        state_sensors.append(("temperature", "Les informations du capteur de température sont indisponibles"))
     # If the temperature is too low we add to state_sensors that temperature
     # is too low
-    elif (int(selected_plante[1]) < requests.get(get_temperature_value).json()):
+    elif (int(selected_plant[1]) < requests.get(get_temperature_value).json()):
         test = test+1
         state_sensors.append(("temperature", 'La temprature est trop faible, il fait trop froid'))
         # print (test)
         sensor_not_good = sensor_not_good + 1
     # If the temperature is too high we add to state_sensors that temperature
     # is high low
-    elif (requests.get(get_temperature_value).json() < int(selected_plante[2])):
+    elif (requests.get(get_temperature_value).json() < int(selected_plant[2])):
         state_sensors.append(("temperature", "La temprature est trop importante, il fait trop chaud"))
         sensor_not_good = sensor_not_good + 1
     # If the temperature is good we add to state_sensors that temperature
@@ -255,27 +255,27 @@ while (stop_reload == 0):
     # We are testing that we get the humidity value from thinger.io
     if (requests.get(get_humidity_value).json() is None):
         state_sensors.append(("humidity", "Les informations du capteur d'humidité sont indisponibles"))
-    # If the humidity is too low we add to state_sensors that moisture
+    # If the humidity is too low we add to state_sensors that humidity
     # is too low
-    elif (requests.get(get_humidity_value).json() > int(selected_plante[3])):
+    elif (requests.get(get_humidity_value).json() > int(selected_plant[3])):
         state_sensors.append(("humidity", "L'humidité du sol de la plante est insuffisante, il faut arroser votre plante"))
         sensor_not_good = sensor_not_good +1
-    # If the moisture is good we add to state_sensors that moisture
+    # If the humidity is good we add to state_sensors that humidity
     # is good
     else:
         state_sensors.append(("humidity", "L'humidité du sol de la plante est optimale"))
 
     # We are testing that we get the lux value from thinger.io
     if (requests.get(get_lux_value).json() is None):
-        state_sensors.append(("moisture", "Les informations du capteur d'humidité sont indisponibles"))
+        state_sensors.append(("lux", "Les informations du capteur d'humidité sont indisponibles"))
     # If the lux is too low we add to state_sensors that lux
     # is too low
-    elif (requests.get(get_lux_value).json() < int(selected_plante[4])*75/100):
+    elif (requests.get(get_lux_value).json() < int(selected_plant[4])*75/100):
         state_sensors.append(("lux", "La luminosité de la plante est insuffisante, il faut mettre votre plante plus au soleil votre plante"))
         sensor_not_good = sensor_not_good +1
     # If the lux is too high we add to state_sensors that lux
     # is too high
-    elif (requests.get(get_lux_value).json() > int(selected_plante[4])*150/100):
+    elif (requests.get(get_lux_value).json() > int(selected_plant[4])*150/100):
         state_sensors.append(("lux", "La luminosité de la plante est insuffisante, il faut mettre votre plante plus à l'ombre votre plante"))
         sensor_not_good = sensor_not_good +1
     # If the lux is good we add to state_sensors that lux
