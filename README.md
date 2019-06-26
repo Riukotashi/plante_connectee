@@ -52,4 +52,10 @@ Voici la liste de toutes les librairies
  ![Arduino-and-DHT11_bb-800x800](https://user-images.githubusercontent.com/26713811/60217542-3f28b380-986d-11e9-9d7e-498869fcb515.png)
  
  
+ Le cateur de lumnisoté
+![20190517_105048](https://user-images.githubusercontent.com/26713811/60217789-cd9d3500-986d-11e9-84a2-5630e3ed1b6b.jpg)
+![20190517_105057](https://user-images.githubusercontent.com/26713811/60217791-cece6200-986d-11e9-8c9c-d1d9807b527f.jpg)
+![20190517_105103](https://user-images.githubusercontent.com/26713811/60217795-cfff8f00-986d-11e9-9a05-d91bb96f8e69.jpg)
+
+Le capteur d'humidité du sol
  
