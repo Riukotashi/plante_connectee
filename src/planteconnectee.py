@@ -14,7 +14,7 @@ import json
 import getpass 
 import time
 from time import strftime
-from datetime import datetime, date, time
+from datetime import datetime, date
 from os import system
 
 # Allow log and confidential informations when verbosity = 1.
