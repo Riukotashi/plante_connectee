@@ -239,9 +239,7 @@ while (stop_reload == 0):
     # If the temperature is too low we add to state_sensors that temperature
     # is too low
     elif (int(selected_plant[1]) < requests.get(get_temperature_value).json()):
-        test = test+1
         state_sensors.append(("temperature", 'La temprature est trop faible, il fait trop froid'))
-        # print (test)
         sensor_not_good = sensor_not_good + 1
     # If the temperature is too high we add to state_sensors that temperature
     # is high low
