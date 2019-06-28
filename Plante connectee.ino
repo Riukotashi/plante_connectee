@@ -92,7 +92,7 @@ void setup()
   // This is used to send the value of the sensors to thinger.io 
   thing["luxValue"] >> outputValue(apds.readCH0Level());
   thing["temperatureValue"] >> outputValue(dht.readTemperature());
-  thing["humidityValue"] >> outputValue(humidityPin);
+  thing["humidityValue"] >> outputValue(analogRead(0));
   
 }
 
