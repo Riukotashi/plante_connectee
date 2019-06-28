@@ -233,17 +233,21 @@ while (stop_reload == 0):
     # sensor_not_good is here to count how many sensor has values that are too
     # high or to low 
     sensor_not_good = 0
+
+    temperature_value = requests.get(get_temperature_value).json()
+    humidity_value = requests.get(get_humidity_value).json()
+    lux_value = requests.get(get_lux_value).json()
     # We are testing that we get the temperature value from thinger.io
-    if (requests.get(get_temperature_value).json() is None):
+    if (temperature_value is None):
         state_sensors.append(("temperature", "Les informations du capteur de température sont indisponibles"))
     # If the temperature is too low we add to state_sensors that temperature
     # is too low
-    elif (int(selected_plant[1]) < requests.get(get_temperature_value).json()):
+    elif (int(selected_plant[1]) < temperature_value):
         state_sensors.append(("temperature", 'La temprature est trop faible, il fait trop froid'))
         sensor_not_good = sensor_not_good + 1
     # If the temperature is too high we add to state_sensors that temperature
     # is high low
-    elif (requests.get(get_temperature_value).json() < int(selected_plant[2])):
+    elif (temperature_value < int(selected_plant[2])):
         state_sensors.append(("temperature", "La temprature est trop importante, il fait trop chaud"))
         sensor_not_good = sensor_not_good + 1
     # If the temperature is good we add to state_sensors that temperature
@@ -251,11 +255,11 @@ while (stop_reload == 0):
     else:
         state_sensors.append(("temperature", "La temperature est optimale"))
     # We are testing that we get the humidity value from thinger.io
-    if (requests.get(get_humidity_value).json() is None):
+    if (humidity_value is None):
         state_sensors.append(("humidity", "Les informations du capteur d'humidité sont indisponibles"))
     # If the humidity is too low we add to state_sensors that humidity
     # is too low
-    elif (requests.get(get_humidity_value).json() > int(selected_plant[3])):
+    elif (humidity_value > int(selected_plant[3])):
         state_sensors.append(("humidity", "L'humidité du sol de la plante est insuffisante, il faut arroser votre plante"))
         sensor_not_good = sensor_not_good +1
     # If the humidity is good we add to state_sensors that humidity
@@ -264,16 +268,16 @@ while (stop_reload == 0):
         state_sensors.append(("humidity", "L'humidité du sol de la plante est optimale"))
 
     # We are testing that we get the lux value from thinger.io
-    if (requests.get(get_lux_value).json() is None):
+    if (lux_value is None):
         state_sensors.append(("lux", "Les informations du capteur d'humidité sont indisponibles"))
     # If the lux is too low we add to state_sensors that lux
     # is too low
-    elif (requests.get(get_lux_value).json() < int(selected_plant[4])*75/100):
+    elif (lux_value < int(selected_plant[4])*75/100):
         state_sensors.append(("lux", "La luminosité de la plante est insuffisante, il faut mettre votre plante plus au soleil votre plante"))
         sensor_not_good = sensor_not_good +1
     # If the lux is too high we add to state_sensors that lux
     # is too high
-    elif (requests.get(get_lux_value).json() > int(selected_plant[4])*150/100):
+    elif (lux_value > int(selected_plant[4])*150/100):
         state_sensors.append(("lux", "La luminosité de la plante est insuffisante, il faut mettre votre plante plus à l'ombre votre plante"))
         sensor_not_good = sensor_not_good +1
     # If the lux is good we add to state_sensors that lux
@@ -297,7 +301,3 @@ while (stop_reload == 0):
 
 
     time.sleep(5)
-
-
-
-
